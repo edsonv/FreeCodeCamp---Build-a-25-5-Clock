@@ -1,10 +1,11 @@
-import { InputHTMLAttributes, useState } from 'react';
+import { InputHTMLAttributes, useRef, useState } from 'react';
 import styles from './EditableInput.module.scss';
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
 
 export const EditableInput = ({ ...props }: Props): JSX.Element => {
   const [isEdit, setIsEdit] = useState(false);
+  const editableInputRef = useRef<HTMLDivElement>(null);
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
@@ -19,11 +20,13 @@ export const EditableInput = ({ ...props }: Props): JSX.Element => {
           setIsEdit(!isEdit);
         }
       }}
+      className={styles.editableInput}
+      ref={editableInputRef}
     >
       {isEdit ? (
         <input {...props} id='null' type='number' className={styles.input} />
       ) : (
-        <span>{props.value}</span>
+        <span className={styles.text}>{props.value}</span>
       )}
     </div>
   );

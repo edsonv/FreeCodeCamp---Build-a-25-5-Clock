@@ -1,8 +1,8 @@
-import { useReducer, useEffect, Dispatch } from 'react';
-import { Action, ActionType } from '../domain/entities/action';
-import { reducer } from './reducer';
-import { initialState } from './initialState';
-import { State } from '../domain/entities/state';
+import { Dispatch, useEffect, useReducer } from 'react';
+import { initialState } from '../../application/state/initialState';
+import { reducer } from '../../application/state/reducer';
+import { Action, ActionType } from '../../domain/entities/action';
+import { State } from '../../domain/entities/state';
 
 export const useApp = (): [State, Dispatch<Action>] => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -13,7 +13,7 @@ export const useApp = (): [State, Dispatch<Action>] => {
     if (state.isRunning && state.timeLeft !== 0) {
       countdownInterval = setInterval(() => {
         dispatch({ type: ActionType.updateCountdown });
-      }, 10);
+      }, 1000);
     } else if (state.isRunning && state.timeLeft >= 0 && state.isSession) {
       dispatch({ type: ActionType.setIsSession });
       dispatch({

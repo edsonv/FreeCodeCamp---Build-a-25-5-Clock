@@ -1,0 +1,14 @@
+.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .label {
+    font-size: 1.4rem;
+  }
+
+  > .countdown {
+    font-size: 8rem;
+    line-height: 1;
+  }
+}

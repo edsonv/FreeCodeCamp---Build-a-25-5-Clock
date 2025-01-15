@@ -1,6 +1,7 @@
-import { Action, ActionType } from '../domain/entities/action';
-import { State } from '../domain/entities/state';
+import { Action, ActionType } from '../../domain/entities/action';
+import { State } from '../../domain/entities/state';
 import { initialState } from './initialState';
+
 
 export const reducer = (state: State, action: Action) => {
   switch (action.type) {

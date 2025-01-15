@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './ui/App.tsx';
 import './ui/styles/global.scss';
+import { ContextProvider } from './application/context/appContext.provider.tsx';
 
 // createRoot(document.getElementById('root')!).render(
 //   <StrictMode>
@@ -12,7 +13,9 @@ import './ui/styles/global.scss';
 
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </StrictMode>,
   document.getElementById('root')
 );
